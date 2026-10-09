@@ -80,7 +80,7 @@ Data sources:
 ---
 
 ## 📘 AI Usage Log
-This project used Microsoft Copilot to help structure the Blueprint, generate README content, and outline slide text. All code and logic were written and tested manually in Google Colab.
+This project used Microsoft Copilot to help structure the Blueprint, revise README content, and outline slide text. All code and logic were written and tested manually in Google Colab. Any errors that could not be fixed with my knowledge were also corrected by AI.
 
 ---
 
