@@ -37,14 +37,22 @@ No training or fine‑tuning is required.
 ---
 
 ## 📂 Data Plan
-Tier 1 requires **no dataset creation**.
+Tier 1 requires 
 
 Data sources:
 - A small set of **self‑collected road images**  
 - Optional: public traffic sign images for testing  
 - No GTSRB training (Tier 1 restriction)
+The dataset contains labeled traffic sign classes including:
 
-`data/README.md` will document where test images come from.
+Stop Sign
+Speed Limit Sign
+Warning Sign
+Pedestrian Crossing Sign
+Turn Sign
+Traffic Light
+Source: https://www.kaggle.com/datasets/valentynsichkar/traffic-signs-dataset-in-yolo-format
+`data/README.md` will also document where test images come from.
 
 ---
 
@@ -53,7 +61,7 @@ Data sources:
 - Correct detection of traffic signs in at least **80%** of test images.
 
 **Secondary Metric:**  
-- Inference time under **1 second** per image in Google Colab.
+- Inference time under **10 second** per image in Google Colab.
 
 ---
 
@@ -77,49 +85,6 @@ Data sources:
 **Risk 2:** Some images may have poor lighting or occlusion.  
 **Plan B:** Collect clearer images or adjust confidence threshold.
 
----
 
-## 📘 AI Usage Log
-This project used Microsoft Copilot to help structure the Blueprint, revise README content, and outline slide text. All code and logic were written and tested manually in Google Colab. Any errors that could not be fixed with my knowledge were also corrected by AI.
 
----
-
-## 📁 Repository Structure
-traffic-sign-guardian/
-├── README.md
-├── data/
-│   └── README.md
-├── notebooks/
-│   └── traffic_sign_demo.ipynb
-└── docs/
-└── proposal.pdf
-
----
-
-## 🚀 Starter Code (Tier 1)
-```python
-!pip install ultralytics opencv-python matplotlib
-
-from ultralytics import YOLO
-
-model = YOLO('yolov8n.pt')
-
-results = model('https://ultralytics.com/images/traffic-signs.jpg')
-results[0].show()
-python
-results = model('my_road_image.jpg')
-
-sign_report = {}
-
-for box in results[0].boxes:
-    cls_id = int(box.cls[0])
-    name = model.names[cls_id]
-    conf = float(box.conf[0])
-
-    if "sign" in name.lower() or "stop" in name.lower() or "traffic" in name.lower():
-        sign_report[name] = sign_report.get(name, 0) + 1
-
-print("Traffic Sign Report:")
-for sign, count in sign_report.items():
-    print(f"- {sign}: {count}")
 
