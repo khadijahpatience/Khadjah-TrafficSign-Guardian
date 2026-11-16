@@ -6,9 +6,7 @@
 ---
 
 ## 📌 Project Overview
-Traffic signs provide critical information for safe driving, but humans and autonomous systems can miss or misinterpret them. This project builds a Tier 1 computer vision application that detects traffic signs using a pretrained YOLOv8 model and generates a simple traffic‑sign report from road images.
-
-This is a Tier 1 project because it uses **pretrained models only**, focuses on **application logic**, and does **not** require training or dataset creation.
+Traffic signs provide critical information for safe driving, but humans and autonomous systems can miss or misinterpret them. This project builds a Tier 1 computer vision application that detects traffic signs by using a dataset to train the YOLOv8 model. OCR will then be applied to detected sign regions to extract readable text.
 
 ---
 
@@ -18,7 +16,7 @@ Drivers and autonomous systems rely on accurate traffic sign recognition to make
 ---
 
 ## 💡 Solution Overview
-Traffic Sign Guardian uses a pretrained YOLOv8 model to detect traffic signs in images and produce a structured report listing sign types and counts. The system processes a road image, identifies sign locations, and outputs a readable summary of detected signs.
+Traffic Sign Guardian uses a YOLOv8 model to detect traffic signs in images and produce a structured report listing sign types and counts. The system processes a road image, identifies sign locations, and outputs a readable summary of detected signs.
 
 **Flow:**  
 Image → YOLOv8 Detection → Extract Sign Labels → Traffic Sign Report
@@ -41,18 +39,19 @@ Tier 1 requires
 
 Data sources:
 - A small set of **self‑collected road images**  
-- Optional: public traffic sign images for testing  
-- No GTSRB training (Tier 1 restriction)
-The dataset contains labeled traffic sign classes including:
+- (https://www.kaggle.com/datasets/valentynsichkar/traffic-signs-dataset-in-yolo-format)
 
-Stop Sign
-Speed Limit Sign
-Warning Sign
-Pedestrian Crossing Sign
-Turn Sign
-Traffic Light
-Source: https://www.kaggle.com/datasets/valentynsichkar/traffic-signs-dataset-in-yolo-format
-`data/README.md` will also document where test images come from.
+Dataset Size:
+- Approximately 900+ annotated traffic sign images.
+
+Classes:
+The dataset contains labeled traffic sign classes including
+- Stop Sign
+- Speed Limit Sign
+- Warning Sign
+- Pedestrian Crossing Sign
+- Turn Sign
+- Traffic Light
 
 ---
 
@@ -70,7 +69,7 @@ Source: https://www.kaggle.com/datasets/valentynsichkar/traffic-signs-dataset-in
 | Phase | Goal | Milestone |
 |------|------|-----------|
 | 🧭 Blueprint | Plan approved | Midterm submitted |
-| 🔌 First Working Demo | Pretrained YOLOv8 detects objects | Demo runs on sample images |
+| 🔌 First Working Demo | YOLOv8 detects objects | Demo runs on sample images |
 | 🛠 Make It Yours | Add sign‑report logic | System works on your images |
 | 📈 Improve & Measure | Test on multiple images | Accuracy + failure cases recorded |
 | 🎥 Package & Present | Final demo + README | Final submitted |
